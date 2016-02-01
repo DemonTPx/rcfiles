@@ -1,0 +1,7 @@
+[user]
+	name = Bert Hekman
+	email = demontpx@gmail.com
+[color]
+	ui = auto
+[core]
+	autocrlf = input
