@@ -83,3 +83,6 @@ alias ls="ls --color=auto -F"
 alias gitrmmerged='git branch --merged | grep -v "\*" | grep -v master | grep -v dev | xargs -n 1 git branch -d'
 
 export ANSIBLE_NOCOWS=1
+
+cdpath=($HOME/workspace)
+
