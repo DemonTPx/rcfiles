@@ -45,7 +45,7 @@ DISABLE_AUTO_UPDATE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git symfony2 vagrant composer docker docker-compose)
+plugins=(git symfony2 composer docker docker-compose yarn npm)
 
 # User configuration
 
@@ -88,4 +88,11 @@ export LC_ALL="en_GB.UTF-8"
 export ANSIBLE_NOCOWS=1
 
 cdpath=($HOME/workspace)
+
+bindkey "^[[3;5~" kill-word # CTRL-DEL
+bindkey "^U" undo # CTRL-U
+
+# IntelliJ
+bindkey "^[O5C" forward-word
+bindkey "^[O5D" backward-word
 
