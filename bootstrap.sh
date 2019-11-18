@@ -29,7 +29,8 @@ sudo apt install -y \
     ca-certificates \
     gnupg-agent \
     software-properties-common \
-    ttf-bitstream-vera
+    ttf-bitstream-vera \
+    ansible
 
 mkdir -p ~/workspace ~/Applications
 
@@ -140,3 +141,11 @@ then
   mv ~/Applications/jetbrains-toolbox-${JETBRAINS_TOOLBOX_VERSION}/jetbrains-toolbox ~/Applications/jetbrains-toolbox
   rm -rf ~/Applications/jetbrains-toolbox-${JETBRAINS_TOOLBOX_VERSION} ~/Applications/jetbrains-toolbox-${JETBRAINS_TOOLBOX_VERSION}.tar.gz
 fi
+
+# DBeaver
+if [ ! -f /usr/bin/dbeaver ]
+then
+  sudo add-apt-repository -y ppa:serge-rider/dbeaver-ce
+  sudo apt update -y
+fi
+sudo apt install -y dbeaver-ce
