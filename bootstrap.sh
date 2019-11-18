@@ -21,13 +21,15 @@ sudo apt install -y \
     build-essential \
     zsh \
     tmux \
+    htop \
+    colordiff \
     curl \
     wget \
     apt-transport-https \
     ca-certificates \
     gnupg-agent \
     software-properties-common \
-    fonts-dejavu
+    ttf-bitstream-vera
 
 mkdir -p ~/workspace ~/Applications
 
