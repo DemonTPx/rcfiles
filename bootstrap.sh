@@ -31,6 +31,15 @@ sudo apt install -y \
 
 mkdir -p ~/workspace ~/Applications
 
+# Google Chrome
+if [ ! -f /usr/bin/google-chrome ]
+then
+  curl -fsSL "https://dl-ssl.google.com/linux/linux_signing_key.pub" | sudo apt-key add -
+  echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+  sudo apt update -y
+fi
+sudo apt install -y google-chrome-stable
+
 # rcfiles?
 if [ ! -e ~/workspace/rcfiles ]
 then
