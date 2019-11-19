@@ -142,6 +142,12 @@ then
   rm -rf ~/Applications/jetbrains-toolbox-${JETBRAINS_TOOLBOX_VERSION} ~/Applications/jetbrains-toolbox-${JETBRAINS_TOOLBOX_VERSION}.tar.gz
 fi
 
+if [ ! -f /etc/sysctl.d/60-intellij.conf ]
+then
+  echo "fs.inotify.max_user_watches = 524288" | sudo tee /etc/sysctl.d/60-intellij.conf
+  sudo sysctl -p --system
+fi
+
 # DBeaver
 if [ ! -f /usr/bin/dbeaver ]
 then
