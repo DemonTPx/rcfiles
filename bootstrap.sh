@@ -103,7 +103,7 @@ then
   sudo add-apt-repository -y ppa:ondrej/php
   sudo apt update -y
 fi
-sudo apt install -y php${PHP_VERSION}-{cli,bcmath,curl,gd,intl,json,mbstring,mysql,opcache,sqlite3,xml} php-{xdebug,igbinary}
+sudo apt install -y php${PHP_VERSION}-{cli,bcmath,curl,gd,intl,json,mbstring,mysql,opcache,sqlite3,xml} php-{apcu,xdebug,igbinary}
 
 # Composer
 if [ ! -f /usr/local/bin/composer ]
