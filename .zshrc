@@ -82,9 +82,6 @@ source $ZSH/oh-my-zsh.sh
 alias ls="ls --color=auto -Fv"
 alias gitrmmerged='git branch --merged | grep -v "\*" | grep -v master | grep -v dev | xargs -n 1 git branch -d'
 
-export LANGUAGE="en_GB.UTF-8"
-export LC_ALL="en_GB.UTF-8"
-
 export ANSIBLE_NOCOWS=1
 
 cdpath=($HOME/workspace)
