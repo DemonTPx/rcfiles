@@ -3,9 +3,9 @@
 ME=$(whoami)
 UBUNTU_LSB=bionic
 PHP_VERSION=7.4
-DOCKER_COMPOSE_VERSION=1.24.1
+DOCKER_COMPOSE_VERSION=1.25.4
 NODE_VERSION=13
-JETBRAINS_TOOLBOX_VERSION=1.16.6067
+JETBRAINS_TOOLBOX_VERSION=1.16.6319
 
 set -xe
 
@@ -109,7 +109,7 @@ sudo apt install -y php${PHP_VERSION}-{cli,bcmath,curl,gd,intl,json,mbstring,mys
 if [ ! -f /usr/local/bin/composer ]
 then
   php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-  php -r "if (hash_file('sha384', 'composer-setup.php') === 'a5c698ffe4b8e849a443b120cd5ba38043260d5c4023dbf93e1558871f1f07f58274fc6f4c93bcfd858c6bd0775cd8d1') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+  php -r "if (hash_file('sha384', 'composer-setup.php') === 'e0012edf3e80b6978849f5eff0d4b4e4c79ff1609dd1e613307e16318854d24ae64f26d17af3ef0bf7cfb710ca74755a') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
   php composer-setup.php
   php -r "unlink('composer-setup.php');"
 
@@ -128,6 +128,7 @@ sudo apt install -y nodejs
 # Yarn
 if [ ! -f /usr/bin/yarn ]
 then
+  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
   sudo apt update -y
 fi
