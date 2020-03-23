@@ -5,7 +5,7 @@ My collection of rcfiles... for my own convenience!
 
 #### Resizing and moving windows
 
-Right small
+Left small
 
     xdotool getactivewindow windowsize 1174 100% windowmove 0 0
 
