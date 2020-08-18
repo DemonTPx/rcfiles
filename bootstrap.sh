@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ME=$(whoami)
-UBUNTU_LSB=bionic
+UBUNTU_LSB=focal
 PHP_VERSION=7.4
 DOCKER_COMPOSE_VERSION=1.25.5
 NODE_VERSION=14
