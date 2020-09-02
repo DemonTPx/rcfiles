@@ -3,9 +3,9 @@
 ME=$(whoami)
 UBUNTU_LSB=focal
 PHP_VERSION=7.4
-DOCKER_COMPOSE_VERSION=1.25.5
+DOCKER_COMPOSE_VERSION=1.26.2
 NODE_VERSION=14
-JETBRAINS_TOOLBOX_VERSION=1.17.6856
+JETBRAINS_TOOLBOX_VERSION=1.18.7455
 
 set -xe
 
@@ -108,10 +108,19 @@ sudo apt install -y php${PHP_VERSION}-{cli,bcmath,curl,gd,intl,json,mbstring,mys
 # Composer
 if [ ! -f /usr/local/bin/composer ]
 then
+  EXPECTED_CHECKSUM="$(wget -q -O - https://composer.github.io/installer.sig)"
   php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-  php -r "if (hash_file('sha384', 'composer-setup.php') === 'e0012edf3e80b6978849f5eff0d4b4e4c79ff1609dd1e613307e16318854d24ae64f26d17af3ef0bf7cfb710ca74755a') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+  ACTUAL_CHECKSUM="$(php -r "echo hash_file('sha384', 'composer-setup.php');")"
+
+  if [ "$EXPECTED_CHECKSUM" != "$ACTUAL_CHECKSUM" ]
+  then
+      >&2 echo 'ERROR: Invalid installer checksum'
+      rm composer-setup.php
+      exit 1
+  fi
+
   php composer-setup.php
-  php -r "unlink('composer-setup.php');"
+  rm composer-setup.php
 
   sudo mv composer.phar /usr/local/bin/composer
 fi
