@@ -16,3 +16,10 @@ Right large
 Focus on google chrome or start it
 
     sh -c "xdotool search --onlyvisible --desktop 0 --class "google-chrome" windowactivate || xdotool search --onlyvisible --class "google-chrome" windowactivate || google-chrome"
+
+#### Other usefull command
+
+Toggle mute input
+
+    pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
