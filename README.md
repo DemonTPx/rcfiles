@@ -21,5 +21,4 @@ Focus on google chrome or start it
 
 Toggle mute input
 
-    pactl set-source-mute @DEFAULT_SOURCE@ toggle
-
+    xdotool key XF86AudioMicMute
