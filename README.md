@@ -17,8 +17,8 @@ Focus on google chrome or start it
 
     sh -c "xdotool search --onlyvisible --desktop 0 --class "google-chrome" windowactivate || xdotool search --onlyvisible --class "google-chrome" windowactivate || google-chrome"
 
-#### Other usefull command
+#### Other useful command
 
 Toggle mute input
 
-    xdotool key XF86AudioMicMute
+    xdotool getactivewindow key XF86AudioMicMute
