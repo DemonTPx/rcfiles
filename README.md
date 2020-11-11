@@ -22,3 +22,7 @@ Focus on google chrome or start it
 Toggle mute input
 
     xdotool getactivewindow key XF86AudioMicMute
+
+Map Scroll Lock to toggle mute input
+
+    xmodmap -e "keycode 78 = XF86AudioMicMute"
