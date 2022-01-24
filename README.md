@@ -26,3 +26,7 @@ Toggle mute input
 Map Scroll Lock to toggle mute input
 
     xmodmap -e "keycode 78 = XF86AudioMicMute"
+
+Play/pause spotify
+
+    dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
