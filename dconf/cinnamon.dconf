@@ -11,6 +11,7 @@ restart-cinnamon=@as []
 terminal=['<Primary><Alt>t', '<Super>t']
 screensaver=['<Super>l', 'XF86ScreenSaver']
 calculator=['XF86Calculator', '<Super>c']
+mic-mute=['XF86AudioMicMute', 'Scroll_Lock']
 
 [desktop/keybindings/wm]
 move-to-side-n=['<Super>Up']
