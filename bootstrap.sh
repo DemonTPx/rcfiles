@@ -37,8 +37,8 @@ mkdir -p ~/workspace ~/Applications
 # Google Chrome
 if [ ! -f /usr/bin/google-chrome ]
 then
-  curl -fsSL "https://dl-ssl.google.com/linux/linux_signing_key.pub" | sudo apt-key add -
-  echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
+  curl -fsSL "https://dl-ssl.google.com/linux/linux_signing_key.pub" | sudo gpg --dearmor -o /usr/share/keyrings/google-archive-keyring.gpg
+  echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-archive-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
   sudo apt update -y
 fi
 sudo apt install -y google-chrome-stable
@@ -76,8 +76,8 @@ fi
 # Docker
 if [ ! -e /usr/bin/docker ]
 then
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-  echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu ${UBUNTU_LSB} stable" | sudo tee /etc/apt/sources.list.d/docker.list
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+  echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu ${UBUNTU_LSB} stable" | sudo tee /etc/apt/sources.list.d/docker.list
   sudo apt update -y
 fi
 sudo apt install -y docker-ce docker-ce-cli containerd.io
@@ -128,8 +128,8 @@ fi
 # Node
 if [ ! -f /usr/bin/node ]
 then
-  curl -fsSL "https://deb.nodesource.com/gpgkey/nodesource.gpg.key" | sudo apt-key add -
-  echo "deb https://deb.nodesource.com/node_${NODE_VERSION}.x ${UBUNTU_LSB} main" | sudo tee /etc/apt/sources.list.d/node.list
+  curl -fsSL "https://deb.nodesource.com/gpgkey/nodesource.gpg.key" | sudo gpg --dearmor -o /usr/share/keyrings/nodesource-archive-keyring.gpg
+  echo "deb [signed-by=/usr/share/keyrings/nodesource-archive-keyring.gpg] https://deb.nodesource.com/node_${NODE_VERSION}.x ${UBUNTU_LSB} main" | sudo tee /etc/apt/sources.list.d/node.list
   sudo apt update -y
 fi
 sudo apt install -y nodejs
@@ -137,8 +137,8 @@ sudo apt install -y nodejs
 # Yarn
 if [ ! -f /usr/bin/yarn ]
 then
-  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-  echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo gpg --dearmor -o /usr/share/keyrings/yarn-archive-keyring.gpg
+  echo "deb [signed-by=/usr/share/keyrings/yarn-archive-keyring.gpg] https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
   sudo apt update -y
 fi
 sudo apt install -y yarn
