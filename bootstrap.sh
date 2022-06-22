@@ -3,7 +3,6 @@
 ME=$(whoami)
 UBUNTU_LSB=focal
 PHP_VERSION=8.1
-DOCKER_COMPOSE_VERSION=1.29.2
 NODE_VERSION=16
 JETBRAINS_TOOLBOX_VERSION=1.22.10970
 
@@ -80,15 +79,8 @@ then
   echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu ${UBUNTU_LSB} stable" | sudo tee /etc/apt/sources.list.d/docker.list
   sudo apt update -y
 fi
-sudo apt install -y docker-ce docker-ce-cli containerd.io
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 sudo adduser "${ME}" docker
-
-# Docker-compose
-if [ ! -f /usr/local/bin/docker-compose ]
-then
-  sudo curl -fsSL "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-  sudo chmod +x /usr/local/bin/docker-compose
-fi
 
 # Traefik
 if [ ! -e ~/workspace/traefik ]
@@ -103,7 +95,7 @@ then
   sudo add-apt-repository -y ppa:ondrej/php
   sudo apt update -y
 fi
-sudo apt install -y php${PHP_VERSION}-{cli,bcmath,curl,gd,intl,json,mbstring,mysql,opcache,sqlite3,xml} php-{apcu,xdebug,igbinary,pcov}
+sudo apt install -y php${PHP_VERSION}-{cli,bcmath,curl,gd,intl,mbstring,mysql,opcache,sqlite3,xml} php-{apcu,xdebug,igbinary,pcov}
 
 # Composer
 if [ ! -f /usr/local/bin/composer ]
