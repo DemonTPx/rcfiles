@@ -28,7 +28,8 @@ sudo apt install -y \
     ca-certificates \
     gnupg-agent \
     software-properties-common \
-    ttf-bitstream-vera \
+    fonts-symbola \
+    fonts-hack \
     ansible
 
 mkdir -p ~/workspace ~/Applications
@@ -52,12 +53,6 @@ cp -t ~/ \
     ~/workspace/rcfiles/.tmux.conf \
     ~/workspace/rcfiles/.gitconfig \
     ~/workspace/rcfiles/.vimrc
-
-# Font config
-mkdir -p ~/.config/fontconfig/conf.d/
-cp -t ~/.config/fontconfig/conf.d/ \
-    ~/workspace/rcfiles/fontconfig/69-emoji.conf \
-    ~/workspace/rcfiles/fontconfig/70-no-dejavu.conf
 
 # Cinnamon config
 dconf load /org/cinnamon/ < ~/workspace/rcfiles/dconf/cinnamon.dconf
