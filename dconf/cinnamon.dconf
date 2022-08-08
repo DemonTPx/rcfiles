@@ -38,7 +38,7 @@ bottom-notifications=true
 
 [desktop/interface]
 icon-theme='Mint-Y-Dark'
-gtk-theme='Mint-Y-Darker'
+gtk-theme='Mint-Y-Legacy-Darker'
 
 [desktop/sound]
 event-sounds=false
