@@ -87,7 +87,8 @@ fi
 # PHP
 if [ ! -f "/etc/apt/sources.list.d/ondrej-php-${UBUNTU_LSB}.list" ]
 then
-  sudo add-apt-repository -y ppa:ondrej/php
+  curl -fsSL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x14aa40ec0831756756d7f66c4f4ea0aae5267a6c" | sudo gpg --dearmor -o /usr/share/keyrings/ondrej-php-archive-keyring.gpg
+  echo "deb [signed-by=/usr/share/keyrings/ondrej-php-archive-keyring.gpg] http://ppa.launchpad.net/ondrej/php/ubuntu ${UBUNTU_LSB} main" | sudo tee /etc/apt/sources.list.d/ondrej-php-${UBUNTU_LSB}.list
   sudo apt update -y
 fi
 sudo apt install -y php${PHP_VERSION}-{cli,bcmath,curl,gd,intl,mbstring,mysql,opcache,sqlite3,xml} php-{apcu,xdebug,igbinary,pcov}
@@ -148,7 +149,8 @@ fi
 # DBeaver
 if [ ! -f /usr/bin/dbeaver ]
 then
-  sudo add-apt-repository -y ppa:serge-rider/dbeaver-ce
+  curl -fsSL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x30ece32520d438c21e16bf884a71b51882788fd2" | sudo gpg --dearmor -o /usr/share/keyrings/serge-rider-archive-keyring.gpg
+  echo "deb [signed-by=/usr/share/keyrings/serge-rider-archive-keyring.gpg] http://ppa.launchpad.net/serge-rider/dbeaver-ce/ubuntu ${UBUNTU_LSB} main" | sudo tee /etc/apt/sources.list.d/serge-rider-dbeaver-ce-${UBUNTU_LSB}.list
   sudo apt update -y
 fi
 sudo apt install -y dbeaver-ce
