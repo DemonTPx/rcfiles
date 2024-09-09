@@ -20,11 +20,11 @@ My collection of rcfiles... for my own convenience!
 
 ## Useful gnome extensions
 
-https://extensions.gnome.org/extension/615/appindicator-support/
-https://extensions.gnome.org/extension/1160/dash-to-panel/
-https://extensions.gnome.org/extension/28/gtile/
-https://extensions.gnome.org/extension/4105/notification-banner-position/
-https://extensions.gnome.org/extension/1714/ssh-search-provider-reborn/
+- https://extensions.gnome.org/extension/615/appindicator-support/
+- https://extensions.gnome.org/extension/1160/dash-to-panel/
+- https://extensions.gnome.org/extension/28/gtile/
+- https://extensions.gnome.org/extension/4105/notification-banner-position/
+- https://extensions.gnome.org/extension/1714/ssh-search-provider-reborn/
 
 ## Other useful commands
 
