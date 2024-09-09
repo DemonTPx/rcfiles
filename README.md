@@ -2,30 +2,39 @@
 
 My collection of rcfiles... for my own convenience!
 
+## Fedora stuff
 
-#### Resizing and moving windows
+    dnf install -y \
+        fish \
+        xdotool \
+        ansible \
+        nodejs \
+        php83 \
+        php83-syspaths \
+        php83-php-intl \
+        php83-php-ldap \
+        php83-php-process \
+        php83-php-pecl-rdkafka6 \
+        php83-php-pecl-pcov \
+        php83-php-pecl-xdebug3
 
-Left small
+## Useful gnome extensions
 
-    xdotool getactivewindow windowsize 1174 100% windowmove 0 0
+https://extensions.gnome.org/extension/615/appindicator-support/
+https://extensions.gnome.org/extension/1160/dash-to-panel/
+https://extensions.gnome.org/extension/28/gtile/
+https://extensions.gnome.org/extension/4105/notification-banner-position/
+https://extensions.gnome.org/extension/1714/ssh-search-provider-reborn/
 
-Right large
+## Other useful commands
 
-    xdotool getactivewindow windowsize 1386 100% windowmove 1174 0
-
-Focus on google chrome or start it
+Focus on google chrome or start it using xdotool
 
     sh -c "xdotool search --onlyvisible --desktop 0 --class "google-chrome" windowactivate || xdotool search --onlyvisible --class "google-chrome" windowactivate || google-chrome"
 
-#### Other useful command
+Bind scroll lock to mic mute
 
-Toggle mute input
-
-    xdotool getactivewindow key XF86AudioMicMute
-
-Map Scroll Lock to toggle mute input
-
-    xmodmap -e "keycode 78 = XF86AudioMicMute"
+    dconf write /org/gnome/settings-daemon/plugins/media-keys/mic-mute "['Scroll_Lock']"
 
 Play/pause spotify
 
