@@ -38,6 +38,8 @@ Bind scroll lock to mic mute
 
     dconf write /org/gnome/settings-daemon/plugins/media-keys/mic-mute "['Scroll_Lock']"
 
-Play/pause spotify
+Control Spotify
 
     dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+    dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+    dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
