@@ -12,8 +12,10 @@ My collection of rcfiles... for my own convenience!
         php83 \
         php83-syspaths \
         php83-php-intl \
+        php83-php-gd \
         php83-php-ldap \
         php83-php-process \
+        php83-php-pecl-imagick-im7 \
         php83-php-pecl-rdkafka6 \
         php83-php-pecl-pcov \
         php83-php-pecl-xdebug3
