@@ -6,7 +6,6 @@ My collection of rcfiles... for my own convenience!
 
     dnf install -y \
         fish \
-        xdotool \
         ansible \
         nodejs \
         php83 \
@@ -30,10 +29,6 @@ My collection of rcfiles... for my own convenience!
 
 ## Other useful commands
 
-Focus on google chrome or start it using xdotool
-
-    sh -c "xdotool search --onlyvisible --desktop 0 --class "google-chrome" windowactivate || xdotool search --onlyvisible --class "google-chrome" windowactivate || google-chrome"
-
 Bind scroll lock to mic mute
 
     dconf write /org/gnome/settings-daemon/plugins/media-keys/mic-mute "['Scroll_Lock']"
@@ -43,3 +38,8 @@ Control Spotify
     dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
     dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
     dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+
+Disable unused keybinds which conflict with IntelliJ keybinds
+
+    gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "[]"
+    gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "[]"
