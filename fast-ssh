@@ -1,0 +1,62 @@
+#!/bin/bash
+
+HOSTS_FILE="$HOME/.config/fast-ssh-hosts"
+touch "$HOSTS_FILE"
+
+get_common_prefix() {
+    local query="$1"
+    local matches
+    matches=$(grep "^$query" "$HOSTS_FILE")
+
+    if [ -z "$matches" ]; then
+        echo "$query"
+        return
+    fi
+
+    echo "$matches" | sort -V | awk '
+        NR == 1 { prefix = $0; next }
+        {
+            while (index($0, prefix) != 1) {
+                prefix = substr(prefix, 1, length(prefix) - 1)
+            }
+        }
+        END { print prefix }
+    '
+}
+
+export -f get_common_prefix
+export HOSTS_FILE
+
+RESULT=$(fzf --prompt="SSH naar (Insert = Nieuw | Del = Wis): " \
+             --height=100% \
+             --print-query \
+             --expect=insert \
+             --bind="tab:transform-query(bash -c 'get_common_prefix {q}')" \
+             --bind="del:execute(sed -i '\:^{}$:d' '$HOSTS_FILE')+reload(cat '$HOSTS_FILE')" \
+             < <(sort -V "$HOSTS_FILE"))
+
+QUERY=$(echo "$RESULT" | sed -n '1p')
+KEY=$(echo "$RESULT" | sed -n '2p')
+SELECTION=$(echo "$RESULT" | sed -n '3p')
+
+if [ "$KEY" = "insert" ]; then
+    TARGET="$QUERY"
+    if [ ! -z "$TARGET" ]; then
+        if ! grep -qxF "$TARGET" "$HOSTS_FILE"; then
+            echo "$TARGET" >> "$HOSTS_FILE"
+            sort -V -o "$HOSTS_FILE" "$HOSTS_FILE"
+        fi
+    else
+        exit 1
+    fi
+else
+    TARGET="$SELECTION"
+    if [ -z "$TARGET" ]; then
+        TARGET="$QUERY"
+    fi
+fi
+
+if [ ! -z "$TARGET" ]; then
+    clear
+    exec ssh "$TARGET"
+fi
