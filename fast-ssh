@@ -27,7 +27,7 @@ get_common_prefix() {
 export -f get_common_prefix
 export HOSTS_FILE
 
-RESULT=$(fzf --prompt="SSH naar (Insert = Nieuw | Del = Wis): " \
+RESULT=$(fzf --prompt="SSH to (Insert = add entry | Del = delete entry): " \
              --height=100% \
              --print-query \
              --expect=insert \
